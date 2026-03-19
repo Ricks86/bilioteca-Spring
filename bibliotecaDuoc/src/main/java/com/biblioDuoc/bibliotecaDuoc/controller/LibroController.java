@@ -24,7 +24,7 @@ public class LibroController {
         return libroService.saveLibro(libro);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{id}") //jakd
     public Libro buscarLibro(@PathVariable int id){
         return libroService.getLibroId(id);
     }
@@ -37,5 +37,10 @@ public class LibroController {
     @DeleteMapping("{id}")
     public String eliminarLibro(@PathVariable int id){
         return libroService.deleteLibro(id);
+    }
+
+    @GetMapping("/total")
+    public int totalLibrosV1(){
+        return libroService.totalLibros();
     }
 }

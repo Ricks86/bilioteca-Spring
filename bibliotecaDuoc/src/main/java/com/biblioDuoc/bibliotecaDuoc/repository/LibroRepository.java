@@ -4,6 +4,7 @@ import com.biblioDuoc.bibliotecaDuoc.model.Libro;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Repository
@@ -83,5 +84,52 @@ public class LibroRepository {
 
     public int totalLibros() {
         return listaLibros.size();
+    }
+
+    public List<Libro> obtenerLibrosPorFecha(int fecha) {
+        List<Libro> listaLibros = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getFechaPublicacion() == fecha) {
+                listaLibros.add(libro);
+            }
+        }
+        return listaLibros;
+    }
+
+    public List<Libro> obtenerLibrosPorAutor(String autor) {
+        List<Libro> listaLibros = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getAutor().equals(autor)) {
+                listaLibros.add(libro);
+            }
+        }
+        return listaLibros;
+    }
+
+    public Libro obtenerLibroMasAntiguo(){
+        Libro masAntiguo = listaLibros.get(0);
+        for (Libro libroActual : listaLibros) {
+            if (libroActual.getFechaPublicacion() < masAntiguo.getFechaPublicacion()) {
+                masAntiguo = libroActual;
+            }
+        }
+        return masAntiguo;
+    }
+    public Libro obtenerLibroMasNuevo(){
+        Libro masNuevo = listaLibros.get(0);
+        for (Libro libroActual : listaLibros) {
+            if (libroActual.getFechaPublicacion() > masNuevo.getFechaPublicacion()) {
+                masNuevo = libroActual;
+            }
+        }
+        return masNuevo;
+    }
+    public List<Libro> ordenarLibrosPorFecha(List<Libro> listaOriginal) {
+        List<Libro> listaOrdenada = new ArrayList<>(listaOriginal);
+
+        listaOrdenada.sort(Comparator.comparingInt(Libro::getFechaPublicacion));
+
+        return listaOrdenada;
+
     }
 }

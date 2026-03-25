@@ -24,7 +24,7 @@ public class LibroController {
         return libroService.saveLibro(libro);
     }
 
-    @GetMapping("{id}") //jakd
+    @GetMapping("/porId/{id}") //
     public Libro buscarLibro(@PathVariable int id){
         return libroService.getLibroId(id);
     }
@@ -42,5 +42,35 @@ public class LibroController {
     @GetMapping("/total")
     public int totalLibrosV1(){
         return libroService.totalLibros();
+    }
+
+    @GetMapping("/isbn/{isbn}")
+    public Libro buscarLibro(@PathVariable String isbn){
+        return libroService.getLibrosPorIsbn(isbn);
+    }
+
+    @GetMapping("/porFecha/{publicacion}")
+    public List<Libro> buscarLibroPublicacion(@PathVariable int publicacion){
+        return libroService.getLibrosPorPublicacion(publicacion);
+    }
+
+    @GetMapping("/porAutor/{autor}")
+    public List<Libro> buscarLibroAutor(@PathVariable String autor){
+        return libroService.getLibrosPorAutor(autor);
+    }
+
+    @GetMapping("/masAntiguo")
+    public Libro buscarLibroMasAntiguo(){
+        return libroService.getLibroMasAntiguo();
+    }
+
+    @GetMapping("/masNuevo")
+    public Libro buscarLibroMasNuevo(){
+        return libroService.getLibroMasNuevo();
+    }
+
+    @GetMapping("/ordenar")
+    public List<Libro> ordenarLibros(){
+        return libroService.getListaLibrosOrdenado();
     }
 }

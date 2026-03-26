@@ -29,12 +29,12 @@ public class JVRepository {
     }
     
     public Videojuego obtenerJuegoPorId(int id) {
-        for (Videojuego juego : ListaJuegos) {   //forma de recorrer la lista
-            if (juego.getId() == id) { //si la id es igual retorna el juego
+        for (Videojuego juego : ListaJuegos) {  
+            if (juego.getId() == id) { 
                 return juego;
             }
         }
-        return null; //si no encuentra el juego retorna null
+        return null; 
     }
     
     public void guardarJuego(Videojuego juego) {
@@ -42,8 +42,8 @@ public class JVRepository {
     }
 
     public void eliminarJuego(int id) {
-        Videojuego juego = obtenerJuegoPorId(id); //busca el juego por id
-        if (juego != null) { //si el juego existe lo elimina
+        Videojuego juego = obtenerJuegoPorId(id); 
+        if (juego != null) { 
             ListaJuegos.remove(juego);
         }
     }
@@ -52,21 +52,21 @@ public class JVRepository {
         int idjuego = 0;
         int idPosicion = 0;
 
-        for (int i = 0; i < ListaJuegos.size(); i++) { //recorre la lista de juegos
-            if (ListaJuegos.get(i).getId() == juegoActualizado.getId()) { //si encuentra el juego por id
-                idjuego = ListaJuegos.get(i).getId(); //asigna el id del juego encontrado a la variable idjuego
-                idPosicion = i; //asigna la posición del juego encontrado a la variable idPosicion
-                break; //sale del ciclo
+        for (int i = 0; i < ListaJuegos.size(); i++) { 
+            if (ListaJuegos.get(i).getId() == juegoActualizado.getId()) { 
+                idjuego = ListaJuegos.get(i).getId(); 
+                idPosicion = i;
+                break; 
             }
         }
 
         Videojuego juegoCambio = new Videojuego();
-        juegoCambio.setId(idjuego); //asigna el id del juego encontrado al juego actualizado
-        juegoCambio.setCodigo(juegoActualizado.getCodigo()); //asigna el codigo del juego
-        juegoCambio.setTitulo(juegoActualizado.getTitulo()); //asigna el titulo del juego
-        juegoCambio.setConsola(juegoActualizado.getConsola()); //asigna
-        juegoCambio.setAnioLanzamiento(juegoActualizado.getAnioLanzamiento()); //asigna el año de lanzamiento del juego
-        juegoCambio.setPrecio(juegoActualizado.getPrecio()); //asigna el precio del juego
+        juegoCambio.setId(idjuego);
+        juegoCambio.setCodigo(juegoActualizado.getCodigo()); 
+        juegoCambio.setTitulo(juegoActualizado.getTitulo()); 
+        juegoCambio.setConsola(juegoActualizado.getConsola()); 
+        juegoCambio.setAnioLanzamiento(juegoActualizado.getAnioLanzamiento()); 
+        juegoCambio.setPrecio(juegoActualizado.getPrecio());
     }
 
 }
